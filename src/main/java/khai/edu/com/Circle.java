@@ -10,7 +10,6 @@ public class Circle extends Figure{
     public void setRadius(double radius){
         if(radius <= 0) throw new IllegalArgumentException("Wrong input, please try again");
         this.radius = radius;
-        System.out.println("You have made a circle with radius = " + radius);
     }
 
     public double getRadius(){
