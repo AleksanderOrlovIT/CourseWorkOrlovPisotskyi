@@ -78,4 +78,17 @@ public class Trapezium extends Figure{
     public double findPerimeter() {
         return getSmallBase() + getRightSide() + getLeftSide() + getRightSide();
     }
+
+    @Override
+    public String returnName()
+    {
+        return "Trapezium";
+    }
+
+    @Override
+    public String describeObject()
+    {
+        return ("Smallbase - " + getSmallBase() + " cm;\nBig base - " + getBigBase() + 
+        " cm;\nLeft side - "  + getLeftSide() + " cm;\nRight side - " + getRightSide() + " cm.");
+    }
 }

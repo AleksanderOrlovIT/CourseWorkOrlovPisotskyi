@@ -39,4 +39,16 @@ public class Circle extends Figure{
     public double findSectorArea(int angle){
         return Math.PI * getRadius() * getRadius() / 360 * angle;
     }
+    
+    @Override
+    public String returnName()
+    {
+        return "Circle";
+    }
+
+    @Override
+    public String describeObject()
+    {
+        return ("Radius - " + getRadius()) + " cm.";
+    }
 }

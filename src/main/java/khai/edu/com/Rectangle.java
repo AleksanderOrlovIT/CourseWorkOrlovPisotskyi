@@ -61,4 +61,16 @@ public class Rectangle extends Figure{
     public double findSideBetweenDiagonals(){
         return 2 * findSideAndDiagonalAngle();
     }
+
+    @Override
+    public String returnName()
+    {
+        return "Rectangle";
+    }
+
+    @Override
+    public String describeObject()
+    {
+        return ("Side a - " + getBigSide() + " cm;\nSide b - " + getSmallSide() + " cm.");
+    }
 }
