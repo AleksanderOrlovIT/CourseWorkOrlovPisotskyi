@@ -1,5 +1,6 @@
 package khai.edu.com;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Arrays;
@@ -9,6 +10,7 @@ public class Picture {
     private ArrayList<Figure> figures = new ArrayList<Figure>();
     private ArrayList<String> names = new ArrayList<String>(Arrays.asList("Circle", "Rectangle", "Trapezium"));
     private Random rnd = new Random();
+    private DecimalFormat decimalFormat = new DecimalFormat("#.###");
 
     public void outputInfo()
     {
@@ -22,8 +24,8 @@ public class Picture {
             System.out.println("№" + (i+1));
             System.out.println(figures.get(i).returnName());
             System.out.println(figures.get(i).describeObject());
-            System.out.println("Parameters of figure: \nArea - " + figures.get(i).findArea() + " cm^2.\n" + "Center of gravity - " +
-            figures.get(i).findGravityCenter() + ".\nPerimeter - " + figures.get(i).findPerimeter() + " cm.");
+            System.out.println("Parameters of figure: \nArea - " + decimalFormat.format(figures.get(i).findArea()) + " cm^2.\n" + "Center of gravity - " +
+                    decimalFormat.format(figures.get(i).findGravityCenter()) + ".\nPerimeter - " + figures.get(i).findPerimeter() + " cm.");
             System.out.println("----------------------------------------");
         }
     }
@@ -62,7 +64,7 @@ public class Picture {
 
             case 3:
                 while(true) {
-                    System.out.println("Input you sides for rectangle please (a,b)");
+                    System.out.println("Input you sides for trapezium please (a,b,c,d)");
                     if (sc.hasNextDouble() || sc.hasNextInt()) {
                         side = sc.nextDouble();
                         side2 = sc.nextDouble();
@@ -87,7 +89,7 @@ public class Picture {
 
     public void generateFigures(int a)
     {
-        double side,side2,side3,side4;
+        double side,side2,side3,side4,h;
         if(a<=0) throw new IllegalArgumentException("Wrong input. Argument is between 1 and any other positive integer");
         else {
             for(int i=0;i<a;i++)
@@ -95,21 +97,22 @@ public class Picture {
                 String check = names.get(rnd.nextInt(0,3));
                 switch (check) {
                 case "Circle":
-                    side = rnd.nextDouble(1,30);
+                    side = Math.ceil(rnd.nextDouble(1,30));
                     Circle circ = new Circle(side);
                     figures.add(circ);
                     break;
                 case "Rectangle":
-                    side = rnd.nextDouble(1,30);
-                    side2 = rnd.nextDouble(1,30);
+                    side = Math.ceil(rnd.nextDouble(1,30));
+                    side2 = Math.ceil(rnd.nextDouble(1,30));
                     Rectangle rect = new Rectangle(side, side2);
                     figures.add(rect);
                     break;
                 case "Trapezium":
-                    side = rnd.nextDouble(8,30);
-                    side2 = side - 5;
-                    side3 = rnd.nextDouble(1,30);
-                    side4 = rnd.nextDouble(1,30);
+                    h = Math.ceil(rnd.nextDouble(3,10));
+                    side = Math.ceil(rnd.nextDouble(4,30));
+                    side2 = Math.ceil(rnd.nextDouble(1,side-1.0));
+                    side3 = Math.ceil(rnd.nextDouble(h,Math.sqrt(h*h + (side-side2) * (side-side2))));
+                    side4 = Math.ceil(Math.sqrt(Math.pow((side - Math.sqrt((side3*side3)-(h*h))),2) + (h*h)));
                     Trapezium trap = new Trapezium(side,side2,side3,side4);
                     figures.add(trap);
                     break;

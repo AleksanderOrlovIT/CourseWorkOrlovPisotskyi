@@ -58,16 +58,9 @@ public class Trapezium extends Figure{
         if(findHeight() == getLeftSide() || findHeight() == getBigBase()) setTrapeziumType("Rectangular Trapezium");
     }
 
-    // походу надо переделать
     @Override
-    public double findArea() {
-        return ((getSmallBase() + getBigBase()) / 2) *
-                Math.sqrt(getLeftSide() * getLeftSide() -
-                        ((getBigBase() - getSmallBase()) * (getBigBase() - getSmallBase())
-                        + getLeftSide() * getLeftSide() - getRightSide() * getRightSide() /
-                                (2 * (getBigBase() - getSmallBase()))) * ((getBigBase() - getSmallBase()) *
-                                (getBigBase() - getSmallBase()) + getLeftSide() * getLeftSide() - getRightSide()
-                                * getRightSide() / (2 * (getBigBase() - getSmallBase()))));
+    public double findArea(){
+        return (0.5 * (smallBase + bigBase) * Math.sqrt(leftSide*leftSide - Math.pow((bigBase - smallBase)/2,2)));
     }
 
 

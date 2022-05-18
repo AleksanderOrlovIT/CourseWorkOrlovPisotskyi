@@ -8,18 +8,16 @@ public class Rectangle extends Figure{
     }
 
     public void setSides(double a, double b){
-        if(a == b || a <= 0 || b<=0){
+        if(a <= 0 || b<=0){
             throw new IllegalArgumentException("Wrong input, please try again");
         }
         if(a > b) {
             bigSide = a;
             smallSide = b;
-            System.out.println("You have made a rectangle with side a = " + a + " and side b = " + b);
         }
         else {
             bigSide = b;
             smallSide = a;
-            System.out.println("You have made a rectangle with side a = " + a + " and side b = " + b);
         }
     }
 

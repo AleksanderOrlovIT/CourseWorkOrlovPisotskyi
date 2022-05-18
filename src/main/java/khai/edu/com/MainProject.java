@@ -46,6 +46,7 @@ public class MainProject {
                 graphicFigure graph = new graphicFigure();
                 break;
             case 6:
+                System.out.print("Input your amount of generated figures - ");
                 if(sc.hasNextInt())
                 {
                     needed = sc.nextInt();
