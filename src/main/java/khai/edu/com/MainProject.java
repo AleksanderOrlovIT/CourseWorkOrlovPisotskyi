@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class MainProject {
     
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         Scanner sc = new Scanner(System.in);
         UserInterface usGUI = new UserInterface();
@@ -37,7 +37,8 @@ public class MainProject {
                 figures.outputInfo();
                 break;
             case 3:
-                System.out.println("I AODNSJDAOSJDASD"); // YA NE EBU CHO TUT SDELAT )))
+                // dodelay eto sasha orlov gay
+                System.out.println("Input number of figure");
                 break;
             case 4:
                 figures.cleanFigures();
