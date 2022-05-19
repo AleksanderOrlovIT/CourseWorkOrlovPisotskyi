@@ -38,7 +38,16 @@ public class MainProject {
                 break;
             case 3:
                 // dodelay eto sasha orlov gay
-                System.out.println("Input number of figure");
+                System.out.println("Press 1 if you want to search by name or press 2 if you want to search by number");
+                int decision = sc.nextInt();
+                if(decision == 1) {
+                    System.out.println("Please input figure name");
+                    figures.getInformationByName(sc.next());
+                }
+                else if(decision == 2) {
+                    System.out.println("Please input figure number");
+                    figures.getInformationByNumber(sc.nextInt());
+                }
                 break;
             case 4:
                 figures.cleanFigures();

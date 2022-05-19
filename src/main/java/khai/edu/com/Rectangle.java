@@ -2,13 +2,19 @@ package khai.edu.com;
 
 public class Rectangle extends Figure{
     private double bigSide, smallSide;
+    private String name;
 
-    public Rectangle(double a, double b){
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public Rectangle(double a, double b, String name){
         setSides(a, b);
+        setName(name);
     }
 
     public void setSides(double a, double b){
-        if(a <= 0 || b<=0){
+        if(a <= 0 || b<=0 || a==b){
             throw new IllegalArgumentException("Wrong input, please try again");
         }
         if(a > b) {
@@ -48,7 +54,7 @@ public class Rectangle extends Figure{
         return Math.sqrt(getBigSide() * getBigSide() + getSmallSide() * getSmallSide());
     }
 
-    public double findCircumscribesCircleRadius(){
+    public double findCircumscribedCircleRadius(){
         return Math.sqrt(getBigSide() * getBigSide() + getSmallSide() * getSmallSide()) / 2;
     }
 
@@ -63,7 +69,7 @@ public class Rectangle extends Figure{
     @Override
     public String returnName()
     {
-        return "Rectangle";
+        return name;
     }
 
     @Override

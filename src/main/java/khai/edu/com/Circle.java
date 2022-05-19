@@ -2,9 +2,15 @@ package khai.edu.com;
 
 public class Circle extends Figure{
     private double radius;
+    private String name;
 
-    public Circle(double radius){
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public Circle(double radius, String name){
         setRadius(radius);
+        setName(name);
     }
 
     public void setRadius(double radius){
@@ -42,7 +48,7 @@ public class Circle extends Figure{
     @Override
     public String returnName()
     {
-        return "Circle";
+        return name;
     }
 
     @Override

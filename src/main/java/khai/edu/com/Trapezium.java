@@ -3,19 +3,25 @@ package khai.edu.com;
 public class Trapezium extends Figure{
     private double smallBase, bigBase, leftSide, rightSide;
     private String trapeziumType = "Arbitrary trapezium";
+    private String name;
 
-    public Trapezium(double a, double b, double c, double d){
-        setSides(a,b,c,d);
+    public void setName(String name){
+        this.name = name;
     }
 
-    public void setSides(double a, double b, double c, double d){
-        if(a <= 0 || b <= 0 || c <= 0 || d <= 0 || a <= b)
+
+    public Trapezium(double a, double b, double c, double h, String name){
+        setSides(a,b,c,h);
+        setName(name);
+    }
+
+    public void setSides(double a, double b, double c, double h){
+        if(a <= 0 || b <= 0 || c <= 0 || a <= b || c < h || c > Math.sqrt(h*h + (a-b) * (a-b)))
             throw new IllegalArgumentException("Wrong input, please try again");
-        if(c == d) setTrapeziumType("Isosceles trapezium");
         this.bigBase = a;
         this.smallBase = b;
         this.leftSide = c;
-        this.rightSide = d;
+        this.rightSide = Math.sqrt(Math.pow((a - Math.sqrt((c*c)-(h*h))),2) + (h*h));
     }
 
     public double getBigBase() {
@@ -77,7 +83,7 @@ public class Trapezium extends Figure{
     @Override
     public String returnName()
     {
-        return "Trapezium";
+        return name;
     }
 
     @Override
