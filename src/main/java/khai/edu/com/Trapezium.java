@@ -16,12 +16,20 @@ public class Trapezium extends Figure{
     }
 
     public void setSides(double a, double b, double c, double h){
-        if(a <= 0 || b <= 0 || c <= 0 || a <= b || c < h || c > Math.sqrt(h*h + (a-b) * (a-b)))
-            throw new IllegalArgumentException("Wrong input, please try again");
-        this.bigBase = a;
-        this.smallBase = b;
-        this.leftSide = c;
-        this.rightSide = Math.sqrt(Math.pow((a - Math.sqrt((c*c)-(h*h))),2) + (h*h));
+        try{
+            if(b <= 0 || c <= 0 || a <= b || c < h || c > Math.sqrt(h * h + (a - b) * (a - b)))
+                throw new IllegalArgumentException("Wrong input, please try again");
+            this.bigBase = a;
+            this.smallBase = b;
+            this.leftSide = c;
+            this.rightSide = Math.sqrt(Math.pow((a - Math.sqrt((c*c)-(h*h))),2) + (h*h));
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error! Wrong input. Check your parameters and try again.");
+        }
+
+
     }
 
     public double getBigBase() {

@@ -14,17 +14,23 @@ public class Rectangle extends Figure{
     }
 
     public void setSides(double a, double b){
-        if(a <= 0 || b<=0 || a==b){
+        try{
+        if(a <= 0 || b<=0)
             throw new IllegalArgumentException("Wrong input, please try again");
-        }
         if(a > b) {
             bigSide = a;
             smallSide = b;
-        }
+            }
         else {
-            bigSide = b;
-            smallSide = a;
+                bigSide = b;
+                smallSide = a;
+            }
         }
+        catch (Exception e)
+        {
+            System.out.println("Error! Wrong input. Check your parameters and try again.");
+        }
+
     }
 
     public double getBigSide(){

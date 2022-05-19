@@ -128,7 +128,7 @@ public class Picture {
 
     public void generateFigures(int a) {
         double side, side2, side3, h;
-        String name = "";
+        StringBuilder name = new StringBuilder();
         int times;
         if (a <= 0)
             throw new IllegalArgumentException("Wrong input. Argument is between 1 and any other positive integer");
@@ -139,28 +139,28 @@ public class Picture {
                     case "Circle":
                         side = Math.ceil(rnd.nextDouble(1, 30));
                         times = rnd.nextInt(10);
-                        for (int j = 0; j < times; j++) name += String.valueOf((char) rnd.nextInt(1000));
-                        Circle circ = new Circle(side, name);
+                        for (int j = 0; j < times; j++) name.append(String.valueOf((char) rnd.nextInt(1000)));
+                        Circle circ = new Circle(side, name.toString());
                         figures.add(circ);
                         break;
                     case "Rectangle":
                         side = Math.ceil(rnd.nextDouble(1, 30));
                         side2 = Math.ceil(rnd.nextDouble(1, 30));
-                        name = "";
+                        name = new StringBuilder();
                         times = rnd.nextInt(10);
-                        for (int j = 0; j < times; j++) name += String.valueOf((char) rnd.nextInt(1000));
-                        Rectangle rect = new Rectangle(side, side2, name);
+                        for (int j = 0; j < times; j++) name.append(String.valueOf((char) rnd.nextInt(1000)));
+                        Rectangle rect = new Rectangle(side, side2, name.toString());
                         figures.add(rect);
                         break;
                     case "Trapezium":
-                        h = Math.ceil(rnd.nextDouble(3, 10));
-                        side = Math.ceil(rnd.nextDouble(4, 30));
-                        side2 = Math.ceil(rnd.nextDouble(1, side - 1.0));
-                        side3 = Math.ceil(rnd.nextDouble(h, Math.sqrt(h * h + (side - side2) * (side - side2))));
-                        name = "";
+                        h = rnd.nextDouble(3, 20);
+                        side = rnd.nextDouble(4, 30);
+                        side2 = rnd.nextDouble(1, side - 1.0);
+                        side3 = rnd.nextDouble(h,Math.sqrt(h * h + (side - side2) * (side - side2)));
+                        name = new StringBuilder();
                         times = rnd.nextInt(10);
-                        for (int j = 0; j < times; j++) name += String.valueOf((char) rnd.nextInt(1000));
-                        Trapezium trap = new Trapezium(side, side2, side3, h, name);
+                        for (int j = 0; j < times; j++) name.append(String.valueOf((char) rnd.nextInt(1000)));
+                        Trapezium trap = new Trapezium(side, side2, side3, h, name.toString());
                         figures.add(trap);
                         break;
                     default:

@@ -18,6 +18,4 @@ public class UserInterface {
                 6 - Generate collection randomly
                 0 - Exit""");
     }
-
-
 }
