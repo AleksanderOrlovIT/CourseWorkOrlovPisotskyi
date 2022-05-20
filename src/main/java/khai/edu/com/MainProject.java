@@ -37,7 +37,6 @@ public class MainProject {
                 figures.outputInfo();
                 break;
             case 3:
-                // dodelay eto sasha orlov gay
                 System.out.println("Press 1 if you want to search by name or press 2 if you want to search by number");
                 int decision = sc.nextInt();
                 if(decision == 1) {
