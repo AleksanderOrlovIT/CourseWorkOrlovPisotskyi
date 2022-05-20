@@ -11,6 +11,7 @@ public class Trapezium extends Figure{
 
     public Trapezium(double a, double b, double c, double h, String name){
         setSides(a,b,c,h);
+        checkIfTrapeziumIsRectangular();
         setName(name);
     }
 
