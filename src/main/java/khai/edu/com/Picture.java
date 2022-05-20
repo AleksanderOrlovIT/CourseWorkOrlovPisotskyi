@@ -111,6 +111,7 @@ public class Picture {
                                     if (sc.hasNextDouble() || sc.hasNextInt()) {
                                         h = sc.nextDouble();
                                         checkNumbers(h);
+                                        if(side<=side2 || side3<h || side3 > Math.sqrt(h*h + (side-side2)*(side-side2))) throw new ArgumentException(0);
                                         System.out.println("Input the name for trapezium please");
                                         name = sc.next();
                                         for (int i = 0; i < figures.size(); i++) {
@@ -136,7 +137,7 @@ public class Picture {
         }
         catch(Exception e)
         {
-            System.out.println("Error! You inputed negative number. Please try again!");
+            System.out.println(e.toString());
         }
     }
 

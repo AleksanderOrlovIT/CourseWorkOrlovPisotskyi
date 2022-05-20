@@ -6,6 +6,10 @@ class ArgumentException extends Exception{
     {error = a;}
     public String toString()
     {
-        return "Error! Please, input positive numbers for creating figure";
+        if (error==0)
+        {
+            return "Error! Please, input numbers with correct proportions for trapezium.";
+        }
+        else return "Error! Please, input correct positive numbers for creating figure.";
     }
 }

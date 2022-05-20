@@ -9,8 +9,6 @@ public class Trapezium extends Figure{
         this.name = name;
     }
 
-
-
     public Trapezium(double a, double b, double c, double h, String name){
         setSides(a,b,c,h);
         setName(name);
