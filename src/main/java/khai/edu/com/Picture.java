@@ -12,6 +12,11 @@ public class Picture {
     private Random rnd = new Random();
     private DecimalFormat decimalFormat = new DecimalFormat("#.###");
 
+    static void checkNumbers (double a) throws ArgumentException
+    {
+        if(a <= 0) throw new ArgumentException(3);
+    }
+
     public void outputInfo() {
         if (figures.size() == 0) {
             System.out.println("Your collection is empty! Add something pls.");
@@ -40,36 +45,15 @@ public class Picture {
         Scanner sc = new Scanner(System.in);
         if (index <= 0)
             throw new IllegalArgumentException("Wrong input. Argument is between 1 and any other positive integer");
-        switch (index) {
-            case 1:
-                while (true) {
-                    System.out.println("Input your radius for circle please");
-                    if (sc.hasNextDouble() || sc.hasNextInt()) {
-                        side = sc.nextDouble();
-                        System.out.println("Input the name for circle please");
-                        name = sc.next();
-                        for (int i = 0; i < figures.size(); i++) {
-                            if (figures.get(i).returnName().equals(name)) {
-                                System.out.println("This name already exists, please change it to another");
-                                i = -1;
-                                name = sc.next();
-                            }
-                        }
-                        Circle circ = new Circle(side, name);
-                        figures.add(circ);
-                        break;
-                    } else sc.next();
-                }
-                System.out.println("You added new circle!");
-                break;
-            case 2:
-                while (true) {
-                    System.out.println("Input you sides for rectangle please (a,b)");
-                    if (sc.hasNextDouble() || sc.hasNextInt()) {
-                        side = sc.nextDouble();
-                        if(sc.hasNextDouble() || sc.hasNextInt()) {
-                            side2 = sc.nextDouble();
-                            System.out.println("Input the name for rectangle please");
+        try {
+            switch (index) {
+                case 1:
+                    while (true) {
+                        System.out.println("Input your radius for circle please");
+                        if (sc.hasNextDouble() || sc.hasNextInt()) {
+                            side = sc.nextDouble();
+                            checkNumbers(side);
+                            System.out.println("Input the name for circle please");
                             name = sc.next();
                             for (int i = 0; i < figures.size(); i++) {
                                 if (figures.get(i).returnName().equals(name)) {
@@ -78,47 +62,81 @@ public class Picture {
                                     name = sc.next();
                                 }
                             }
-                            Rectangle rect = new Rectangle(side, side2, name);
-                            figures.add(rect);
+                            Circle circ = new Circle(side, name);
+                            figures.add(circ);
                             break;
-                        }else sc.next();
-                    } else sc.next();
-                }
-                System.out.println("You added new rectangle!");
-                break;
-
-            case 3:
-                while (true) {
-                    System.out.println("Input your length for trapezium please (a,b,c,h)");
-                    if (sc.hasNextDouble() || sc.hasNextInt()) {
-                        side = sc.nextDouble();
-                        if(sc.hasNextDouble() || sc.hasNextInt()) {
-                            side2 = sc.nextDouble();
-                            if(sc.hasNextDouble() || sc.hasNextInt()) {
-                                side3 = sc.nextDouble();
-                                if(sc.hasNextDouble() || sc.hasNextInt()) {
-                                    h = sc.nextDouble();
-                                    System.out.println("Input the name for trapezium please");
-                                    name = sc.next();
-                                    for (int i = 0; i < figures.size(); i++) {
-                                        if (figures.get(i).returnName().equals(name)) {
-                                            System.out.println("This name already exists, please change it to another");
-                                            i = -1;
-                                            name = sc.next();
-                                        }
+                        } else sc.next();
+                    }
+                    System.out.println("You added new circle!");
+                    break;
+                case 2:
+                    while (true) {
+                        System.out.println("Input you sides for rectangle please (a,b)");
+                        if (sc.hasNextDouble() || sc.hasNextInt()) {
+                            side = sc.nextDouble();
+                            checkNumbers(side);
+                            if (sc.hasNextDouble() || sc.hasNextInt()) {
+                                side2 = sc.nextDouble();
+                                checkNumbers(side2);
+                                System.out.println("Input the name for rectangle please");
+                                name = sc.next();
+                                for (int i = 0; i < figures.size(); i++) {
+                                    if (figures.get(i).returnName().equals(name)) {
+                                        System.out.println("This name already exists, please change it to another");
+                                        i = -1;
+                                        name = sc.next();
                                     }
-                                    Trapezium trap = new Trapezium(side, side2, side3, h, name);
-                                    figures.add(trap);
-                                    break;
-                                }else sc.next();
-                            }else sc.next();
-                        }else sc.next();
-                    }else sc.next();
-                }
-                System.out.println("You added new trapezium!");
-                break;
-            default:
-                System.out.println("Something got wrong! Connect with your system manager.");
+                                }
+                                Rectangle rect = new Rectangle(side, side2, name);
+                                figures.add(rect);
+                                break;
+                            } else sc.next();
+                        } else sc.next();
+                    }
+                    System.out.println("You added new rectangle!");
+                    break;
+
+                case 3:
+                    while (true) {
+                        System.out.println("Input your length for trapezium please (a,b,c,h)");
+                        if (sc.hasNextDouble() || sc.hasNextInt()) {
+                            side = sc.nextDouble();
+                            checkNumbers(side);
+                            if (sc.hasNextDouble() || sc.hasNextInt()) {
+                                side2 = sc.nextDouble();
+                                checkNumbers(side2);
+                                if (sc.hasNextDouble() || sc.hasNextInt()) {
+                                    side3 = sc.nextDouble();
+                                    checkNumbers(side3);
+                                    if (sc.hasNextDouble() || sc.hasNextInt()) {
+                                        h = sc.nextDouble();
+                                        checkNumbers(h);
+                                        System.out.println("Input the name for trapezium please");
+                                        name = sc.next();
+                                        for (int i = 0; i < figures.size(); i++) {
+                                            if (figures.get(i).returnName().equals(name)) {
+                                                System.out.println("This name already exists, please change it to another");
+                                                i = -1;
+                                                name = sc.next();
+                                            }
+                                        }
+                                        Trapezium trap = new Trapezium(side, side2, side3, h, name);
+                                        figures.add(trap);
+                                        break;
+                                    } else sc.next();
+                                } else sc.next();
+                            } else sc.next();
+                        } else sc.next();
+                    }
+                    System.out.println("You added new trapezium!");
+                    break;
+                default:
+                    System.out.println("Something got wrong! Connect with your system manager.");
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error! You inputed negative number. Please try again!");
         }
     }
 

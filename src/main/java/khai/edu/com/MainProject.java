@@ -53,9 +53,6 @@ public class MainProject {
                 figures.cleanFigures();
                 break;
             case 5:
-                graphicFigure graph = new graphicFigure();
-                break;
-            case 6:
                 System.out.print("Input your amount of generated figures - ");
                 if(sc.hasNextInt())
                 {

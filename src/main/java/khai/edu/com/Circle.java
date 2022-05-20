@@ -14,14 +14,7 @@ public class Circle extends Figure{
     }
 
     public void setRadius(double radius){
-        try {
-            if (radius <= 0) throw new IllegalArgumentException("Wrong input, please try again");
             this.radius = radius;
-        }
-        catch (Exception e)
-        {
-            System.out.println("Error! Wrong input. Check your parameters and try again.");
-        }
     }
 
     public double getRadius(){

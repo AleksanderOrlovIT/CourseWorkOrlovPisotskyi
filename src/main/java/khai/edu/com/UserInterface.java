@@ -14,8 +14,7 @@ public class UserInterface {
                 2 - Show your collection of figures
                 3 - See advanced parameters of figure
                 4 - Delete your collection
-                5 - Visualize your figure
-                6 - Generate collection randomly
+                5 - Generate collection randomly
                 0 - Exit""");
     }
 }

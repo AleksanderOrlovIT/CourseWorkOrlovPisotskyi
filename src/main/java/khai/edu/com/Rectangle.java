@@ -8,6 +8,11 @@ public class Rectangle extends Figure{
         this.name = name;
     }
 
+    static void checkNumbersRect (double a, double b) throws ArgumentException
+    {
+        if(b <= 0 || a <=0) throw new ArgumentException(2);
+    }
+
     public Rectangle(double a, double b, String name){
         setSides(a, b);
         setName(name);
@@ -15,8 +20,7 @@ public class Rectangle extends Figure{
 
     public void setSides(double a, double b){
         try{
-        if(a <= 0 || b<=0)
-            throw new IllegalArgumentException("Wrong input, please try again");
+        checkNumbersRect(a,b);
         if(a > b) {
             bigSide = a;
             smallSide = b;
