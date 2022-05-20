@@ -44,7 +44,8 @@ public class Picture {
         boolean flag = false;
         Scanner sc = new Scanner(System.in);
         if (index <= 0)
-            throw new IllegalArgumentException("Wrong input. Argument is between 1 and any other positive integer");
+            System.out.println("Wrong input. Argument is between 1 and any other positive integer");
+            index = 4;
         try {
             switch (index) {
                 case 1:
@@ -150,7 +151,7 @@ public class Picture {
         StringBuilder name = new StringBuilder();
         int times;
         if (a <= 0)
-            throw new IllegalArgumentException("Wrong input. Argument is between 1 and any other positive integer");
+            System.out.println("Wrong input. Argument is between 1 and any other positive integer");
         else {
             for (int i = 0; i < a; i++) {
                 String check = names.get(rnd.nextInt(0, 3));
