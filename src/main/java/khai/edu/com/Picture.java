@@ -43,9 +43,9 @@ public class Picture {
         String name;
         boolean flag = false;
         Scanner sc = new Scanner(System.in);
-        if (index <= 0)
+        if (index <= 0){
             System.out.println("Wrong input. Argument is between 1 and any other positive integer");
-            index = 4;
+            index = 4;}
         try {
             switch (index) {
                 case 1:
